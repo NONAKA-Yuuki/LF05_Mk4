@@ -1,7 +1,7 @@
 const int l_in1 = 7;
 const int l_in2 = 8;
-const int r_in1 = 10;
-const int r_in2 = 9;
+const int r_in1 = 9;
+const int r_in2 = 10;
 
 int l_sensor;
 int c_sensor;
@@ -10,6 +10,8 @@ int r_sensor;
 unsigned int counter;
 
 const int l_s = 820;
+
+const int back = 4000;
 
 void setup() {
   //Serial.begin(115200);
@@ -48,38 +50,31 @@ if((l_sensor < l_s)&&(c_sensor < l_s)&&(r_sensor < l_s)){ninetyDeg();}         /
 
 void forword() {
   counter = 0;
+  digitalWrite(l_in1, HIGH);
   digitalWrite(l_in2, HIGH);
+  digitalWrite(r_in1, HIGH);
   digitalWrite(r_in2, HIGH);
-  digitalWrite(l_in1, LOW);
-  digitalWrite(r_in1, LOW);
 }
 
 void turnRight() {
   counter = 0;
+  digitalWrite(l_in1, HIGH);
   digitalWrite(l_in2, HIGH);
-  digitalWrite(r_in2, LOW);
-  digitalWrite(l_in1, LOW);
-  digitalWrite(r_in1, HIGH);
+  digitalWrite(r_in1, LOW);
+  digitalWrite(r_in2, HIGH);
 }
 
 void turnLeft() {
   counter = 0;
-  digitalWrite(l_in2, LOW);
+  digitalWrite(l_in1, LOW);
+  digitalWrite(l_in2, HIGH);
+  digitalWrite(r_in1, HIGH);
   digitalWrite(r_in2, HIGH);
-  digitalWrite(l_in1, HIGH);
-  digitalWrite(r_in1, LOW);
 }
 
 void ninetyDeg() {
-  if(++counter > 6000) {
-    digitalWrite(l_in2, HIGH);
-    digitalWrite(r_in2, LOW);
-    digitalWrite(l_in1, LOW);
-    digitalWrite(r_in1, HIGH);
-  } else {
+  digitalWrite(l_in1, HIGH);
     digitalWrite(l_in2, LOW);
+    digitalWrite(r_in1, HIGH);
     digitalWrite(r_in2, HIGH);
-    digitalWrite(l_in1, HIGH);
-    digitalWrite(r_in1, LOW);
-  }
 }

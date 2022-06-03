@@ -7,15 +7,9 @@ int l_sensor;
 int c_sensor;
 int r_sensor;
 
-unsigned int counter;
-
 const int l_s = 820;
 
-const int back = 4000;
-
 void setup() {
-  //Serial.begin(115200);
-
   // IR sensor
   pinMode(A4, INPUT);
   pinMode(A5, INPUT);
@@ -48,33 +42,34 @@ if((l_sensor > l_s)&&(c_sensor < l_s)&&(r_sensor < l_s)){turnLeft();}
 if((l_sensor < l_s)&&(c_sensor < l_s)&&(r_sensor < l_s)){ninetyDeg();}         //90度ターン用
 }
 
-void forword() {
-  counter = 0;
+void forword()
+{
   digitalWrite(l_in1, HIGH);
   digitalWrite(l_in2, HIGH);
   digitalWrite(r_in1, HIGH);
   digitalWrite(r_in2, HIGH);
 }
 
-void turnRight() {
-  counter = 0;
+void turnRight()
+{
   digitalWrite(l_in1, HIGH);
   digitalWrite(l_in2, HIGH);
   digitalWrite(r_in1, LOW);
   digitalWrite(r_in2, HIGH);
 }
 
-void turnLeft() {
-  counter = 0;
+void turnLeft()
+{
   digitalWrite(l_in1, LOW);
   digitalWrite(l_in2, HIGH);
   digitalWrite(r_in1, HIGH);
   digitalWrite(r_in2, HIGH);
 }
 
-void ninetyDeg() {
+void ninetyDeg()
+{
   digitalWrite(l_in1, HIGH);
-    digitalWrite(l_in2, LOW);
-    digitalWrite(r_in1, HIGH);
-    digitalWrite(r_in2, HIGH);
+  digitalWrite(l_in2, LOW);
+  digitalWrite(r_in1, HIGH);
+  digitalWrite(r_in2, HIGH);
 }
